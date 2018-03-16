@@ -1,7 +1,5 @@
 gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
-local initTimer
-
 local timer, timerStr
 local timerX, timerSize
 
@@ -12,10 +10,9 @@ local font = resource.load_font("silkscreen.ttf")
 local endImage = resource.load_image("endofround.png")
 
 util.json_watch("config.json", function(config)
-    initTimer = config.timer * 60
-    timer = initTimer
+    timer = config.timer * 60
     timerSize = config.timersize
-    local timerWidth = font:width(tostring(timer), timerSize)
+    local timerWidth = font:width("00:00", timerSize)
     timerX = NATIVE_WIDTH / 2 - timerWidth / 2
     timerStr = string.format("%02d:00", config.timer)
 
