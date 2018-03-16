@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <button id='reset' class='btn btn-default'>Reset Timer</button>
+
+    <!-- Provides the interface to info-beamer hosted -->
+    <script src="hosted.js"></script>
+
+    <script>
+        // Add CSS style, so the interface has the same look & feel like
+        // the rest of the info-beamer hosted interface. It's bootstrap 3.
+        ib.setDefaultStyle();
+
+        document.getElementById('reset').addEventListener('reset', function (evt) {
+            ib.sendCommand("reset", "reset");
+        });
+    </script>
+</body>
+
+</html>

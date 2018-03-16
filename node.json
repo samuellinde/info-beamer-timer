@@ -1,24 +1,30 @@
 {
-    "name": "Timer",
-    "options": [{
-        "title": "Timer",
-        "name": "timer",
-        "type": "integer",
-        "default": 50
-    }, {
-        "title": "Title",
-        "name": "title",
-        "type": "string",
-        "default": "Timer"
-    }, {
-        "title": "Title Size",
-        "name": "titlesize",
-        "type": "integer",
-        "default": 120
-    }, {
-        "title": "Timer Size",
-        "name": "timersize",
-        "type": "integer",
-        "default": 350
-    }]
+  "name": "Timer",
+  "control_ui": "control_ui.html",
+  "options": [
+    {
+      "title": "Timer",
+      "name": "timer",
+      "type": "integer",
+      "default": 50
+    },
+    {
+      "title": "Title",
+      "name": "title",
+      "type": "string",
+      "default": "Timer"
+    },
+    {
+      "title": "Title Size",
+      "name": "titlesize",
+      "type": "integer",
+      "default": 120
+    },
+    {
+      "title": "Timer Size",
+      "name": "timersize",
+      "type": "integer",
+      "default": 350
+    }
+  ]
 }
