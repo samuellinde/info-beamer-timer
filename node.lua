@@ -11,7 +11,7 @@ util.set_interval(1, function()
     time = time - 1
 end)
 
-node.render()
+function node.render()
     gl.clear(0, 0, 0, 1)
     font:write(120, 320, time, 100, 1, 1, 1, 1)
 end
