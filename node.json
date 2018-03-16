@@ -2,7 +2,7 @@
     "name": "Timer",
     "options": [{
         "title": "Timer",
-        "name": "time",
+        "name": "timer",
         "type": "integer",
         "default": 50
     }, {

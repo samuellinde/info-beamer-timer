@@ -5,22 +5,22 @@ local font = resource.load_font("silkscreen.ttf")
 local timer
 local timerStr
 local timerX
-local timerSize = 350
+local timerSize
 
 local title
 local titleX
-local titleSize = 120
+local titleSize
 
 util.json_watch("config.json", function(config)
     timer = config.timer * 60
+    timerSize = config.timersize
     -- local timerWidth = font:write(tostring(time), timerSize)
     -- timerX = (NATIVE_WIDTH / 2) - (tointeger(timerWidth) / 2)
-    -- timerSize = config.timersize
     timerStr = string.format("%d:00", config.time)
 
     -- Setup title
     title = config.title
-    -- titleSize = config.titlesize
+    titleSize = config.titlesize
     -- local titleWidth = font:write(title, titleSize)
     -- titleX = (NATIVE_WIDTH / 2) - (tointeger(titleWidth) / 2)
 end)
