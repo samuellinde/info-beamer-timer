@@ -1,0 +1,6 @@
+{
+    "name": "Timer",
+    "author": "Samuel Linde <samuel@linde.im>",
+    "desc": "Timer package for Info-Beamer",
+    "repository": "https://github.com/samuellinde/info-beamer-timer"
+}
