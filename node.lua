@@ -14,4 +14,4 @@ end)
 node.render()
     gl.clear(0, 0, 0, 1)
     font:write(120, 320, time, 100, 1, 1, 1, 1)
-end)
+end
