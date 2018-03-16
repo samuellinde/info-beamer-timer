@@ -16,14 +16,14 @@ util.json_watch("config.json", function(config)
     timer = initTimer
     timerSize = config.timersize
     local timerWidth = font:width(tostring(timer), timerSize)
-    -- timerX = (NATIVE_WIDTH / 2) - (tointeger(timerWidth) / 2)
+    timerX = NATIVE_WIDTH / 2 - timerWidth / 2
     timerStr = string.format("%02d:00", config.timer)
 
     -- Setup title
     title = config.title
     titleSize = config.titlesize
     local titleWidth = font:width(title, titleSize)
-    -- titleX = (NATIVE_WIDTH / 2) - (tointeger(titleWidth) / 2)
+    titleX = NATIVE_WIDTH / 2 - titleWidth / 2)
 end)
 
 util.set_interval(1, function()
@@ -43,7 +43,7 @@ function node.render()
         endImage:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
     else
         gl.clear(0, 0, 0, 1)
-        font:write(360, 200, title, titleSize, 1, 1, 1, 1)
-        font:write(320, 400, timerStr, timerSize, 1, 1, 1, 1)
+        font:write(titleX, 200, title, titleSize, 1, 1, 1, 1)
+        font:write(timerX, 400, timerStr, timerSize, 1, 1, 1, 1)
     end
 end
