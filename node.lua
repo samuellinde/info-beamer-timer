@@ -24,7 +24,7 @@ function node.render()
     -- title_width = font:write(title, title_size)
     -- title_x = WIDTH / 2 - title_width / 2
     time_width = font:write(time, timer_size)
-    time_x = WIDTH / 2 - time_width / 2
+    -- time_x = WIDTH / 2 - time_width / 2
     -- font:write(400, 250, title, title_size, 1, 1, 1, 1)
     font:write(400, 450, time, timer_size, 1, 1, 1, 1)
 end
