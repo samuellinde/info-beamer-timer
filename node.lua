@@ -16,7 +16,7 @@ util.json_watch("config.json", function(config)
     timerSize = config.timersize
     -- local timerWidth = font:write(tostring(time), timerSize)
     -- timerX = (NATIVE_WIDTH / 2) - (tointeger(timerWidth) / 2)
-    timerStr = string.format("%d:00", config.time)
+    timerStr = string.format("%d:00", config.timer)
 
     -- Setup title
     title = config.title
