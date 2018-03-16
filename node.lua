@@ -39,5 +39,5 @@ end)
 function node.render()
     gl.clear(0, 0, 0, 1)
     font:write(360, 200, title, titleSize, 1, 1, 1, 1)
-    font:write(360, 400, timerStr, timerSize, 1, 1, 1, 1)
+    font:write(320, 400, timerStr, timerSize, 1, 1, 1, 1)
 end
