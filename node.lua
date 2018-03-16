@@ -20,7 +20,7 @@ util.json_watch("config.json", function(config)
     title = config.title
     titleSize = config.titlesize
     local titleWidth = font:width(title, titleSize)
-    titleX, titleY = NATIVE_WIDTH / 2 - titleWidth / 2, timerY - titleSize - 100
+    titleX, titleY = NATIVE_WIDTH / 2 - titleWidth / 2, timerY - titleSize - 60
 end)
 
 util.set_interval(1, function()
