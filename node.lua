@@ -2,6 +2,8 @@ gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
 local initTimer
 
+local timerStatus = 'running'
+
 local timer, timerStr
 local timerX, timerSize
 
@@ -29,6 +31,12 @@ end)
 util.data_mapper {
     reset = function()
         timer = initTimer
+    end,
+    start = function()
+        timerStatus = 'running'
+    end,
+    stop = function()
+        timerStatus = 'stopped'
     end
 }
 
@@ -38,7 +46,9 @@ util.set_interval(1, function()
     if timer == 0 then
         timerStr = "00:00"
     else
-        timer = timer - 1
+        if timerStatus == 'running' then
+            timer = timer - 1
+        end
         timerStr = string.format("%02d:%02d", minutes, seconds)
     end
 end)
