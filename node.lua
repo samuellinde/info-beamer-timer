@@ -1,5 +1,7 @@
 gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
+local initTimer
+
 local timer, timerStr
 local timerX, timerSize
 
@@ -10,6 +12,7 @@ local font = resource.load_font("silkscreen.ttf")
 local endImage = resource.load_image("endofround.png")
 
 util.json_watch("config.json", function(config)
+    initTimer = config.timer * 60
     timer = config.timer * 60
     timerSize = config.timersize
     local timerWidth = font:width("00:00", timerSize)
@@ -22,6 +25,12 @@ util.json_watch("config.json", function(config)
     local titleWidth = font:width(title, titleSize)
     titleX, titleY = NATIVE_WIDTH / 2 - titleWidth / 2, timerY - titleSize - 60
 end)
+
+util.data_mapper {
+    reset = function()
+        timer = initTimer
+    end
+}
 
 util.set_interval(1, function()
     local minutes = math.floor(timer / 60)
