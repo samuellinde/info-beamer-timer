@@ -15,6 +15,8 @@ util.json_watch("config.json", function(config)
     timer = config.time * 60
     -- local timerWidth = font:write(tostring(time), timerSize)
     -- timerX = (NATIVE_WIDTH / 2) - (tointeger(timerWidth) / 2)
+    -- minutes = config.time
+    -- seconds = 0
     -- timerStr = config.time .. ":00"
 
     -- Setup title
@@ -25,10 +27,13 @@ end)
 
 util.set_interval(1, function()
     timer = timer - 1
+    minutes = tointeger(timer / 60)
+    seconds = timer - (minutes * 60)
+    timerStr = minutes .. ':' .. seconds
 end)
 
 function node.render()
     gl.clear(0, 0, 0, 1)
     font:write(400, 250, title, titleSize, 1, 1, 1, 1)
-    font:write(400, 450, tostring(timer), timerSize, 1, 1, 1, 1)
+    font:write(400, 450, timerStr, timerSize, 1, 1, 1, 1)
 end
