@@ -25,11 +25,11 @@ end)
 
 util.set_interval(1, function()
     timer = timer - 1
-    local minutes = tostring(timer)
+    local minutes = tostring(timer / 60)
     -- local seconds = timer - (minutes * 60)
-    timer = minutes
+    -- timer = minutes
     -- timerStr = tostring(minutes) .. ':' .. tostring(seconds)
-    timerStr = timer
+    timerStr = minutes
 end)
 
 function node.render()
