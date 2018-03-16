@@ -20,7 +20,7 @@ util.set_interval(1, function()
 end)
 
 function node.render()
-    gl.clear(0, 0, 0, 1)
+    -- gl.clear(0, 0, 0, 1)
     -- title_width = font:write(title, title_size)
     -- title_x = WIDTH / 2 - title_width / 2
     time_width = font:write(tostring(time), timer_size)
