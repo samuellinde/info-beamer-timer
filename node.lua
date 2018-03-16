@@ -17,7 +17,7 @@ util.json_watch("config.json", function(config)
     -- timerX = (NATIVE_WIDTH / 2) - (tointeger(timerWidth) / 2)
     -- minutes = config.time
     -- seconds = 0
-    -- timerStr = config.time .. ":00"
+    timerStr = config.time
 
     -- Setup title
     title = config.title
@@ -27,9 +27,9 @@ end)
 
 util.set_interval(1, function()
     timer = timer - 1
-    minutes = tointeger(timer / 60)
-    seconds = timer - (minutes * 60)
-    timerStr = tostring(minutes) .. ':' .. tostring(seconds)
+    -- minutes = tointeger(timer / 60)
+    -- seconds = timer - (minutes * 60)
+    -- timerStr = tostring(minutes) .. ':' .. tostring(seconds)
     timerStr = tostring(timer)
 end)
 
