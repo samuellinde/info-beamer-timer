@@ -1,7 +1,5 @@
 gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
-local json = require "json"
-
 local timer
 local timerStr
 local timerX
@@ -27,13 +25,6 @@ util.json_watch("config.json", function(config)
     -- local titleWidth = font:write(title, titleSize)
     -- titleX = (NATIVE_WIDTH / 2) - (tointeger(titleWidth) / 2)
 end)
-
-util.data_mapper {
-    reset = function(value)
-        local config = json.decode(resource.load_file("config.json"))
-        timer = config.timer * 60
-    end
-}
 
 util.set_interval(1, function()
     local minutes = math.floor(timer / 60)

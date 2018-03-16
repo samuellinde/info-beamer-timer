@@ -1,6 +1,5 @@
 {
   "name": "Timer",
-  "control_ui": "control_ui.html",
   "options": [
     {
       "title": "Timer",
