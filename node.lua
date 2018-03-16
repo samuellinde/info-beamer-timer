@@ -6,7 +6,7 @@ local time
 local time_str
 local title
 local title_size = 120
-local time_size = 200
+local timer_size = 200
 
 util.json_watch("config.json", function(config)
     time = config.time * 60
@@ -21,10 +21,10 @@ end)
 
 function node.render()
     gl.clear(0, 0, 0, 1)
-    title_width = font:write(title, 120)
+    title_width = font:write(title, title_size)
     title_x = NATIVE_WIDTH / 2 - title_width / 2
-    time_width = font:write(time, 200)
+    time_width = font:write(time, timer_size)
     time_x = NATIVE_WIDTH / 2 - time_width / 2
-    font:write(title_x, 250, title, 120, 1, 1, 1, 1)
-    font:write(time_x, 450, time, 200, 1, 1, 1, 1)
+    font:write(400, 250, title, title_size, 1, 1, 1, 1)
+    font:write(400, 450, time, timer_size, 1, 1, 1, 1)
 end
