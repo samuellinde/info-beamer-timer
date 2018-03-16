@@ -30,7 +30,7 @@ util.set_interval(1, function()
         timerStr = "00:00"
     else
         timer = timer - 1
-        timerStr = string.format("%d:%02d", minutes, seconds)
+        timerStr = string.format("%02d:%02d", minutes, seconds)
     end
 end)
 
