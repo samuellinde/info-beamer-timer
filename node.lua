@@ -19,7 +19,7 @@ util.json_watch("config.json", function(config)
 
     -- Setup title
     title = config.title
-    local titleWidth = font:write(title, titleSize)
+    -- local titleWidth = font:write(title, titleSize)
     -- titleX = (NATIVE_WIDTH / 2) - (tointeger(titleWidth) / 2)
 end)
 
