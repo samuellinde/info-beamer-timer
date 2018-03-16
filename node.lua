@@ -5,7 +5,7 @@ local font = resource.load_font("silkscreen.ttf")
 local timer
 local timerStr
 local timerX
-local timerSize = 300
+local timerSize = 350
 
 local title
 local titleX
@@ -29,11 +29,15 @@ util.set_interval(1, function()
     local seconds = timer - (minutes * 60)
     -- timer = minutes
     -- timerStr = tostring(minutes) .. ':' .. tostring(seconds)
-    timerStr = string.format("%d:%02d", minutes, seconds)
+    if timer == 0 then
+        timerStr = "00:00"
+    else
+        timerStr = string.format("%d:%02d", minutes, seconds)
+    end
 end)
 
 function node.render()
     gl.clear(0, 0, 0, 1)
-    font:write(400, 250, title, titleSize, 1, 1, 1, 1)
-    font:write(400, 450, timerStr, timerSize, 1, 1, 1, 1)
+    font:write(360, 200, title, titleSize, 1, 1, 1, 1)
+    font:write(360, 400, timerStr, timerSize, 1, 1, 1, 1)
 end
