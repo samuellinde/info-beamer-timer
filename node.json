@@ -5,5 +5,10 @@
         "name": "time",
         "type": "integer",
         "default": 50
+    }, {
+        "title": "Title",
+        "name": "title",
+        "type": "string",
+        "default": "Timer"
     }]
 }
