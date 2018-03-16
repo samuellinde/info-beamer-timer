@@ -38,7 +38,7 @@ util.set_interval(1, function()
 end)
 
 util.data_mapper {
-    ['reset'] = function(reset)
+    reset = function(reset)
         timer = initTimer
     end
 }
