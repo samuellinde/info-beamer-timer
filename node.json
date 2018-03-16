@@ -1,7 +1,7 @@
 {
     "name": "Timer",
     "options": [{
-        "title": "Time",
+        "title": "Timer",
         "name": "time",
         "type": "integer",
         "default": 50
@@ -10,5 +10,15 @@
         "name": "title",
         "type": "string",
         "default": "Timer"
+    }, {
+        "title": "Title Size",
+        "name": "titleSize",
+        "type": "integer",
+        "default": 120
+    }, {
+        "title": "Timer Size",
+        "name": "timerSize",
+        "type": "integer",
+        "default": 350
     }]
 }
