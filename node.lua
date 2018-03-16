@@ -12,7 +12,7 @@ local titleX
 local titleSize = 120
 
 util.json_watch("config.json", function(config)
-    timer = config.time * 60
+    timer = config.time * 60.0
     -- local timerWidth = font:write(tostring(time), timerSize)
     -- timerX = (NATIVE_WIDTH / 2) - (tointeger(timerWidth) / 2)
     timerStr = config.time
