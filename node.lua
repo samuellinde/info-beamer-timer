@@ -25,8 +25,8 @@ end)
 
 util.set_interval(1, function()
     timer = timer - 1
-    -- minutes = tointeger(timer / 60)
-    -- seconds = timer - (minutes * 60)
+    local minutes = timer / 60
+    local seconds = timer - (minutes * 60)
     -- timerStr = tostring(minutes) .. ':' .. tostring(seconds)
     timerStr = tostring(timer)
 end)
