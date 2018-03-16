@@ -29,7 +29,7 @@ util.set_interval(1, function()
     timer = timer - 1
     minutes = tointeger(timer / 60)
     seconds = timer - (minutes * 60)
-    timerStr = minutes .. ':' .. seconds
+    timerStr = tostring(minutes) .. ':' .. tostring(seconds)
 end)
 
 function node.render()
