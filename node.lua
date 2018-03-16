@@ -15,7 +15,7 @@ util.json_watch("config.json", function(config)
     initTimer = config.timer * 60
     timer = initTimer
     timerSize = config.timersize
-    -- local timerWidth = font:write(tostring(time), timerSize)
+    local timerWidth = font:write(tostring(timer), timerSize)
     -- timerX = (NATIVE_WIDTH / 2) - (tointeger(timerWidth) / 2)
     timerStr = string.format("%02d:00", config.timer)
 
@@ -36,12 +36,6 @@ util.set_interval(1, function()
         timerStr = string.format("%02d:%02d", minutes, seconds)
     end
 end)
-
-util.data_mapper {
-    reset = function(reset)
-        timer = initTimer
-    end
-}
 
 function node.render()
     if timer == 0 then
