@@ -12,12 +12,12 @@
         "default": "Timer"
     }, {
         "title": "Title Size",
-        "name": "titleSize",
+        "name": "titlesize",
         "type": "integer",
         "default": 120
     }, {
         "title": "Timer Size",
-        "name": "timerSize",
+        "name": "timersize",
         "type": "integer",
         "default": 350
     }]
