@@ -1,0 +1,9 @@
+{
+    "name": "Timer",
+    "options": [{
+        "title": "Time",
+        "name": "time",
+        "type": "integer",
+        "default": 50
+    }]
+}
