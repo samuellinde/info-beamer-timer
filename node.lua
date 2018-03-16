@@ -2,29 +2,33 @@ gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
 local font = resource.load_font("silkscreen.ttf")
 
-local time
-local time_str
+local timer
+local timerStr
+local timerX
+timerSize = 300
+
 local title
-local title_size = 120
-local timer_size = 200
+local titleX
+titleSize = 120
 
 util.json_watch("config.json", function(config)
-    time = config.time * 60
+    timer = config.time * 60
+    local timerWidth = font:write(tostring(time), timerSize)
+    timerX = (WIDTH / 2) - (timerWidth / 2)
+    -- timerStr = config.time .. ":00"
+
+    -- Setup title
     title = config.title
-    -- time_str = config.time .. ":00"
+    local titleWidth = font:write(title, titleSize)
+    titleX = (WIDTH / 2) - (titleWidth / 2)
 end)
 
 util.set_interval(1, function()
-    time = time - 1
-    -- time_str = 
+    timer = timer - 1
 end)
 
 function node.render()
     gl.clear(0, 0, 0, 1)
-    -- title_width = font:write(title, title_size)
-    -- title_x = WIDTH / 2 - title_width / 2
-    -- time_width = font:write(tostring(time), timer_size)
-    -- time_x = (WIDTH / 2) - (time_width / 2)
-    font:write(400, 250, title, title_size, 1, 1, 1, 1)
-    font:write(400, 450, tostring(time), timer_size, 1, 1, 1, 1)
+    font:write(titleX, 250, title, titleSize, 1, 1, 1, 1)
+    font:write(timerX, 450, tostring(time), timerSize, 1, 1, 1, 1)
 end
