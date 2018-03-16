@@ -15,7 +15,7 @@ util.json_watch("config.json", function(config)
     timer = config.time * 60
     -- local timerWidth = font:write(tostring(time), timerSize)
     -- timerX = (NATIVE_WIDTH / 2) - (tointeger(timerWidth) / 2)
-    timerStr = config.time
+    timerStr = string.format("%d:00", config.time)
 
     -- Setup title
     title = config.title
@@ -24,14 +24,12 @@ util.json_watch("config.json", function(config)
 end)
 
 util.set_interval(1, function()
-    timer = timer - 1
     local minutes = math.floor(timer / 60)
     local seconds = timer - (minutes * 60)
-    -- timer = minutes
-    -- timerStr = tostring(minutes) .. ':' .. tostring(seconds)
     if timer == 0 then
         timerStr = "00:00"
     else
+        timer = timer - 1
         timerStr = string.format("%d:%02d", minutes, seconds)
     end
 end)
