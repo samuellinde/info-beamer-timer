@@ -18,7 +18,7 @@ util.json_watch("config.json", function(config)
     timerSize = config.timersize
     -- local timerWidth = font:write(tostring(time), timerSize)
     -- timerX = (NATIVE_WIDTH / 2) - (tointeger(timerWidth) / 2)
-    timerStr = string.format("%d:00", config.timer)
+    timerStr = string.format("%02d:00", config.timer)
 
     -- Setup title
     title = config.title
@@ -32,7 +32,6 @@ util.set_interval(1, function()
     local seconds = timer - (minutes * 60)
     if timer == 0 then
         timerStr = "00:00"
-        endImage.draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
     else
         timer = timer - 1
         timerStr = string.format("%02d:%02d", minutes, seconds)
@@ -41,6 +40,10 @@ end)
 
 function node.render()
     gl.clear(0, 0, 0, 1)
-    font:write(360, 200, title, titleSize, 1, 1, 1, 1)
-    font:write(320, 400, timerStr, timerSize, 1, 1, 1, 1)
+    if timer == 0 then
+        endImage:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
+    else
+        font:write(360, 200, title, titleSize, 1, 1, 1, 1)
+        font:write(320, 400, timerStr, timerSize, 1, 1, 1, 1)
+    end
 end
