@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <button id='start' class='btn btn-default'>
+        <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Start Timer
+    </button>
+    <button id='stop' class='btn btn-default'>
+        <span class="glyphicon glyphicon-pause" aria-hidden="true"></span> Pause Timer
+    </button>
+    <button id='reset' class='btn btn-default'>
+        <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span> Reset Timer
+    </button>
+
+    <!-- Provides the interface to info-beamer hosted -->
+    <script src="hosted.js"></script>
+
+    <script>
+        // Add CSS style, so the interface has the same look & feel like
+        // the rest of the info-beamer hosted interface. It's bootstrap 3.
+        ib.setDefaultStyle();
+
+        document.getElementById('start').addEventListener('click', function (evt) {
+            ib.sendCommand("start", "true");
+        });
+
+        document.getElementById('stop').addEventListener('click', function (evt) {
+            ib.sendCommand("stop", "true");
+        });
+
+        document.getElementById('reset').addEventListener('click', function (evt) {
+            ib.sendCommand("reset", "true");
+        });
+    </script>
+</body>
+
+</html>
