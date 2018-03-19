@@ -25,6 +25,13 @@
       "name": "timersize",
       "type": "integer",
       "default": 350
+    },
+    {
+      "title": "Background image",
+      "name": "bgimage",
+      "type": "resource",
+      "valid": ["image"],
+      "default": "redwedding.jpg"
     }
   ]
 }

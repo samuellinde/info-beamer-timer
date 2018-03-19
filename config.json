@@ -1,6 +1,7 @@
 {
-	"timer": 90,
+	"timer": 6,
 	"timersize": 400,
 	"title": "Varberg Morghulis",
-	"titlesize": 80
+	"titlesize": 120,
+	"bgimage": "redwedding.jpg"
 }

@@ -14,19 +14,29 @@ local title
 local titleX, titleSize
 
 local font = resource.load_font("silkscreen.ttf")
+local bouchsans = resource.load_font("bouchsans.ttf")
+local bouchblkb = resource.load_font("bouchblkb.ttf")
 
--- Shown when timer runs out
+-- Images
+local bgImage
 local endImage = resource.load_image("endofround.png")
+
+-- Textures/overlays
+local stdTexture = resource.create_colored_texture(0, 0, 0, 0.8)
+local yTexture = resource.create_colored_texture(1, 1, 0, 0.6)
 
 -- Load and reload config.json
 util.file_watch("config.json", function(content)
     config = json.decode(content)
+
+    bgImage = resource.load_image(config.bgimage)
 
     -- Set initTimer on first load
     local configTimer = config.timer * 60
     if (not timer) or (configTimer ~= initTimer) then
         print("init")
         initTimer = configTimer
+        halfTime = configTimer / 2
         timer = configTimer
         timerStr = string.format("%02d:00", config.timer)
     end
@@ -44,7 +54,7 @@ util.file_watch("config.json", function(content)
     -- Setup title
     title = config.title
     titleSize = config.titlesize
-    local titleWidth = font:width(title, titleSize)
+    local titleWidth = bouchblkb:width(title, titleSize)
     titleX, titleY = NATIVE_WIDTH / 2 - titleWidth / 2, timerY - titleSize - 60
 end)
 
@@ -77,16 +87,27 @@ util.set_interval(1, function()
     if timerStatus == 'running' then
         timer = timer - 1
     end
+
 end)
 
 -- Render function, draws endImage if timer has run out
 function node.render()
+    gl.clear(0, 0, 0, 1)
+    bgImage:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
     if timer < 0 then
-        gl.clear(0, 0, 0, 1)
         endImage:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
+    -- Draw black on yellow around half time left
+    -- elseif (timer > halfTime - 10) and (timer < halfTime + 10) then
+    --     gl.clear(1, 1, 0, 1)
+    --     font:write(titleX, titleY, title, titleSize, 0, 0, 0, 1)
+    --     font:write(timerX, timerY, timerStr, timerSize, 0, 0, 0, 1)
+    elseif timer < 180 then
+        yTexture:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
+        bouchblkb:write(titleX, titleY, title, titleSize, 0, 0, 0, 1)
+        font:write(timerX, timerY, timerStr, timerSize, 0, 0, 0, 1)
     else
-        gl.clear(0, 0, 0, 1)
-        font:write(titleX, titleY, title, titleSize, 1, 1, 1, 1)
+        stdTexture:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
+        bouchblkb:write(titleX, titleY, title, titleSize, 1, 1, 1, 1)
         font:write(timerX, timerY, timerStr, timerSize, 1, 1, 1, 1)
     end
 end
