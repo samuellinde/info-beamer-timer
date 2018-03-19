@@ -20,6 +20,7 @@ local endImage = resource.load_image("endofround.png")
 
 -- Load and reload config.json
 util.file_watch("config.json", function(content)
+    print timer
     config = json.decode(content)
     -- Set initTimer on first load
     if not timer then
