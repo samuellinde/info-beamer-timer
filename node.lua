@@ -14,8 +14,8 @@ local title
 local titleX, titleSize
 
 local font = resource.load_font("silkscreen.ttf")
-local bouchsans = resource.load_font("bouchsans.ttf")
--- local bouchblkb = resource.load_font("bouchblkb.ttf")
+-- local bouchsans = resource.load_font("bouchsans.ttf")
+local bouchblkb = resource.load_font("bouchblkb.ttf")
 
 -- Images
 local bgImage
