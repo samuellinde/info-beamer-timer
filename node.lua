@@ -15,7 +15,7 @@ local titleX, titleSize
 
 local font = resource.load_font("silkscreen.ttf")
 local bouchsans = resource.load_font("bouchsans.ttf")
-local bouchblkb = resource.load_font("bouchblkb.ttf")
+-- local bouchblkb = resource.load_font("bouchblkb.ttf")
 
 -- Images
 local bgImage
@@ -34,7 +34,6 @@ util.file_watch("config.json", function(content)
     -- Set initTimer on first load
     local configTimer = config.timer * 60
     if (not timer) or (configTimer ~= initTimer) then
-        print("init")
         initTimer = configTimer
         halfTime = configTimer / 2
         timer = configTimer
