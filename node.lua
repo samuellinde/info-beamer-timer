@@ -15,15 +15,15 @@ local titleX, titleSize
 
 local font = resource.load_font("silkscreen.ttf")
 -- local bouchsans = resource.load_font("bouchsans.ttf")
--- local bouchblkb = resource.load_font("bouchblkb.ttf")
+local bouchblkb = resource.load_font("bouchblkb.ttf")
 
 -- Images
 local bgImage
 local endImage = resource.load_image("endofround.png")
 
 -- Textures/overlays
-local stdTexture = resource.create_colored_texture(0, 0, 0, 0.8)
-local yTexture = resource.create_colored_texture(1, 1, 0, 0.6)
+-- local stdTexture = resource.create_colored_texture(0, 0, 0, 0.8)
+-- local yTexture = resource.create_colored_texture(1, 1, 0, 0.6)
 
 -- Load and reload config.json
 util.file_watch("config.json", function(content)
@@ -53,7 +53,7 @@ util.file_watch("config.json", function(content)
     -- Setup title
     title = config.title
     titleSize = config.titlesize
-    local titleWidth = font:width(title, titleSize)
+    local titleWidth = bouchblkb:width(title, titleSize)
     titleX, titleY = NATIVE_WIDTH / 2 - titleWidth / 2, timerY - titleSize - 60
 end)
 
@@ -101,12 +101,12 @@ function node.render()
     --     font:write(titleX, titleY, title, titleSize, 0, 0, 0, 1)
     --     font:write(timerX, timerY, timerStr, timerSize, 0, 0, 0, 1)
     elseif timer < 180 then
-        yTexture:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
-        font:write(titleX, titleY, title, titleSize, 0, 0, 0, 1)
+        -- yTexture:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
+        bouchblkb:write(titleX, titleY, title, titleSize, 0, 0, 0, 1)
         font:write(timerX, timerY, timerStr, timerSize, 0, 0, 0, 1)
     else
-        stdTexture:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
-        font:write(titleX, titleY, title, titleSize, 1, 1, 1, 1)
+        -- stdTexture:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
+        bouchblkb:write(titleX, titleY, title, titleSize, 1, 1, 1, 1)
         font:write(timerX, timerY, timerStr, timerSize, 1, 1, 1, 1)
     end
 end
