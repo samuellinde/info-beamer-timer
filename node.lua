@@ -20,17 +20,22 @@ local endImage = resource.load_image("endofround.png")
 
 -- Load and reload config.json
 util.file_watch("config.json", function(content)
-    print timer
     config = json.decode(content)
     -- Set initTimer on first load
     if not timer then
+        print("init")
         initTimer = config.timer * 60
         timer = config.timer * 60
+        timerStr = string.format("%02d:00", config.timer)
+    end
+    if (config.timer * 60) ~= initTimer then
+        print("update")
+        timer = config.timer * 60
+        timerStr = string.format("%02d:00", config.timer)
     end
     timerSize = config.timersize
     local timerWidth = font:width("00:00", timerSize)
     timerX, timerY = NATIVE_WIDTH / 2 - timerWidth / 2, 360
-    timerStr = string.format("%02d:00", config.timer)
 
     -- Setup title
     title = config.title
