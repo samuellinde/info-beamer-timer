@@ -18,18 +18,18 @@ local font = resource.load_font("silkscreen.ttf")
 local bouchblkb = resource.load_font("bouchblkb.ttf")
 
 -- Images
-local bgImage
+local bgImage = resource.load_image("redwedding.jpg")
 local endImage = resource.load_image("endofround.png")
 
 -- Textures/overlays
--- local stdTexture = resource.create_colored_texture(0, 0, 0, 0.8)
--- local yTexture = resource.create_colored_texture(1, 1, 0, 0.6)
+local stdTexture = resource.create_colored_texture(0, 0, 0, 0.8)
+local yTexture = resource.create_colored_texture(1, 1, 0, 0.6)
 
 -- Load and reload config.json
 util.file_watch("config.json", function(content)
     config = json.decode(content)
 
-    bgImage = resource.load_image(config.bgimage)
+    -- bgImage = resource.load_image(config.bgimage)
 
     -- Set initTimer on first load
     local configTimer = config.timer * 60
@@ -101,11 +101,11 @@ function node.render()
     --     font:write(titleX, titleY, title, titleSize, 0, 0, 0, 1)
     --     font:write(timerX, timerY, timerStr, timerSize, 0, 0, 0, 1)
     elseif timer < 180 then
-        -- yTexture:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
+        yTexture:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
         bouchblkb:write(titleX, titleY, title, titleSize, 0, 0, 0, 1)
         font:write(timerX, timerY, timerStr, timerSize, 0, 0, 0, 1)
     else
-        -- stdTexture:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
+        stdTexture:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
         bouchblkb:write(titleX, titleY, title, titleSize, 1, 1, 1, 1)
         font:write(timerX, timerY, timerStr, timerSize, 1, 1, 1, 1)
     end
