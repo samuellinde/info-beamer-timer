@@ -21,6 +21,7 @@ local endImage = resource.load_image("endofround.png")
 -- Load and reload config.json
 util.file_watch("config.json", function(content)
     config = json.decode(content)
+
     -- Set initTimer on first load
     local configTimer = config.timer * 60
     if (not timer) or (configTimer ~= initTimer) then
@@ -29,12 +30,14 @@ util.file_watch("config.json", function(content)
         timer = configTimer
         timerStr = string.format("%02d:00", config.timer)
     end
-    timerSize = config.timersize
-    if config.timer > 99 then
+
+    -- Setup timer
+    if timer > 5999 then
         timerApprox = "000:00"
     else
         timerApprox = "00:00"
     end
+    timerSize = config.timersize
     local timerWidth = font:width(timerApprox, timerSize)
     timerX, timerY = NATIVE_WIDTH / 2 - timerWidth / 2, 360
 
@@ -62,6 +65,10 @@ util.data_mapper {
 util.set_interval(1, function()
     local minutes = math.floor(timer / 60)
     local seconds = timer - (minutes * 60)
+    if timer < 6000 then
+        local timerWidth = font:width("00:00", timerSize)
+        timerX = NATIVE_WIDTH / 2 - timerWidth / 2
+    end
     if timer == 0 then
         timerStr = "00:00"
     else
