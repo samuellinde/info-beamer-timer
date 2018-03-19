@@ -6,6 +6,7 @@ local initTimer
 
 local timerStatus = 'running'
 
+-- Timer and title variables, set dynamically via config.json
 local timer, timerStr
 local timerX, timerSize
 
@@ -13,12 +14,18 @@ local title
 local titleX, titleSize
 
 local font = resource.load_font("silkscreen.ttf")
+
+-- Shown when timer runs out
 local endImage = resource.load_image("endofround.png")
 
+-- Load and reload config.json
 util.file_watch("config.json", function(content)
     config = json.decode(content)
-    initTimer = config.timer * 60
-    timer = config.timer * 60
+    -- Set initTimer on first load
+    if not timer then
+        initTimer = config.timer * 60
+        timer = config.timer * 60
+    end
     timerSize = config.timersize
     local timerWidth = font:width("00:00", timerSize)
     timerX, timerY = NATIVE_WIDTH / 2 - timerWidth / 2, 360
@@ -31,6 +38,7 @@ util.file_watch("config.json", function(content)
     titleX, titleY = NATIVE_WIDTH / 2 - titleWidth / 2, timerY - titleSize - 60
 end)
 
+-- Listen for external triggers
 util.data_mapper {
     reset = function()
         timer = initTimer
@@ -43,6 +51,7 @@ util.data_mapper {
     end
 }
 
+-- Timer
 util.set_interval(1, function()
     local minutes = math.floor(timer / 60)
     local seconds = timer - (minutes * 60)
@@ -56,6 +65,7 @@ util.set_interval(1, function()
     end
 end)
 
+-- Render function, draws endImage if timer has run out
 function node.render()
     if timer == 0 then
         gl.clear(0, 0, 0, 1)
