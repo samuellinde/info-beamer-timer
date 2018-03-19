@@ -1,5 +1,7 @@
 gl.setup(NATIVE_WIDTH, NATIVE_HEIGHT)
 
+local json = require "json"
+
 local initTimer
 
 local timerStatus = 'running'
@@ -13,7 +15,8 @@ local titleX, titleSize
 local font = resource.load_font("silkscreen.ttf")
 local endImage = resource.load_image("endofround.png")
 
-util.json_watch("config.json", function(config)
+util.file_watch("config.json", function(content)
+    config = json.decode(content)
     initTimer = config.timer * 60
     timer = config.timer * 60
     timerSize = config.timersize
