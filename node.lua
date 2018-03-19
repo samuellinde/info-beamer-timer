@@ -22,19 +22,20 @@ local endImage = resource.load_image("endofround.png")
 util.file_watch("config.json", function(content)
     config = json.decode(content)
     -- Set initTimer on first load
-    if not timer then
+    local configTimer = config.timer * 60
+    if (not timer) or (configTimer ~= initTimer) then
         print("init")
-        initTimer = config.timer * 60
-        timer = config.timer * 60
-        timerStr = string.format("%02d:00", config.timer)
-    end
-    if (config.timer * 60) ~= initTimer then
-        print("update")
-        timer = config.timer * 60
+        initTimer = configTimer
+        timer = configTimer
         timerStr = string.format("%02d:00", config.timer)
     end
     timerSize = config.timersize
-    local timerWidth = font:width("00:00", timerSize)
+    if config.timer > 99 then
+        timerApprox = "000:00"
+    else
+        timerApprox = "00:00"
+    end
+    local timerWidth = font:width(timerApprox, timerSize)
     timerX, timerY = NATIVE_WIDTH / 2 - timerWidth / 2, 360
 
     -- Setup title
@@ -64,16 +65,16 @@ util.set_interval(1, function()
     if timer == 0 then
         timerStr = "00:00"
     else
-        if timerStatus == 'running' then
-            timer = timer - 1
-        end
         timerStr = string.format("%02d:%02d", minutes, seconds)
+    end
+    if timerStatus == 'running' then
+        timer = timer - 1
     end
 end)
 
 -- Render function, draws endImage if timer has run out
 function node.render()
-    if timer == 0 then
+    if timer < 0 then
         gl.clear(0, 0, 0, 1)
         endImage:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
     else
