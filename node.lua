@@ -18,7 +18,8 @@ local font = resource.load_font("robotob.ttf")
 local bouchblkb = resource.load_font("bouchblkb.ttf")
 
 -- Images
-local bgImage = resource.load_image("redwedding.jpg")
+-- local bgImage = resource.load_image("redwedding.jpg")
+local bgImage = resource.create_vnc('10.0.1.29')
 local endImage = resource.load_image("endofround.png")
 
 -- Textures/overlays
@@ -48,11 +49,10 @@ util.file_watch("config.json", function(content)
     end
     timerSize = config.timersize
     local timerWidth = font:width(timerApprox, timerSize)
-    timerX, timerY = NATIVE_WIDTH / 2 - timerWidth / 2, 360
+    timerX, timerY = NATIVE_WIDTH / 2 - timerWidth / 2, 400
 
     -- Setup title
     title = config.title
-    -- title = config.bgimage
     titleSize = config.titlesize
     local titleWidth = bouchblkb:width(title, titleSize)
     titleX, titleY = NATIVE_WIDTH / 2 - titleWidth / 2, timerY - titleSize - 60
