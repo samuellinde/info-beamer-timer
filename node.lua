@@ -52,6 +52,7 @@ util.file_watch("config.json", function(content)
 
     -- Setup title
     title = config.title
+    title = config.bgimage
     titleSize = config.titlesize
     local titleWidth = bouchblkb:width(title, titleSize)
     titleX, titleY = NATIVE_WIDTH / 2 - titleWidth / 2, timerY - titleSize - 60
