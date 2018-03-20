@@ -31,7 +31,7 @@
       "name": "bgimage",
       "type": "resource",
       "valid": ["image"],
-      "default": "empty.png"
+      "default": "redwedding.jpg"
     }
   ]
 }
