@@ -18,8 +18,7 @@ local font = resource.load_font("robotob.ttf")
 local bouchblkb = resource.load_font("bouchblkb.ttf")
 
 -- Images
--- local bgImage = resource.load_image("redwedding.jpg")
-local bgImage = resource.create_vnc('10.0.1.29')
+local bgImage -- = resource.load_image("redwedding.jpg")
 local endImage = resource.load_image("endofround.png")
 
 -- Textures/overlays
@@ -30,7 +29,7 @@ local yTexture = resource.create_colored_texture(1, 1, 0, 0.6)
 util.file_watch("config.json", function(content)
     config = json.decode(content)
 
-    -- bgImage = resource.load_image(config.bgimage)
+    bgImage = resource.load_image(config.bgimage.asset_name)
 
     -- Set initTimer on first load
     local configTimer = config.timer * 60
