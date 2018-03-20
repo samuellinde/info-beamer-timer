@@ -13,7 +13,7 @@ local timerX, timerSize
 local title
 local titleX, titleSize
 
-local font = resource.load_font("silkscreen.ttf")
+local font = resource.load_font("robotob.ttf")
 -- local bouchsans = resource.load_font("bouchsans.ttf")
 local bouchblkb = resource.load_font("bouchblkb.ttf")
 
