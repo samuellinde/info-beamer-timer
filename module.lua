@@ -21,7 +21,7 @@ local font = resource.load_font(localized "robotob.ttf")
 local bouchblkb = resource.load_font(localized "bouchblkb.ttf")
 
 -- Images
-local bgImageName
+local bgImageName = "no image"
 local bgImage = resource.load_image(localized "redwedding.jpg")
 local endImage = resource.load_image(localized "endofround.png")
 
@@ -43,7 +43,7 @@ function M.content_update(name)
         config = json.decode(json_file)
 
         -- Load background image, replace if new
-        if (not bgImageName) and (config.bgimage.asset_name ~= bgImageName) then
+        if config.bgimage.asset_name ~= bgImageName then
             bgImageName = config.bgimage.asset_name
             bgImage = resource.load_image(localized(bgImageName))
         end
