@@ -85,8 +85,8 @@ util.set_interval(1, function()
     if timer < 6000 then
         local timerWidth = font:width("00:00", timerSize)
     --     timerX = NATIVE_WIDTH / 2 - timerWidth / 2
-    -- end
-    -- if timer == 0 then
+    end
+    if timer == 0 then
         timerStr = "00:00"
     else
         timerStr = string.format("%02d:%02d", minutes, seconds)
