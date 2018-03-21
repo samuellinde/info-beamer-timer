@@ -9,8 +9,10 @@ local initTimer
 local timerStatus = 'running'
 
 -- Timer and title variables, set dynamically via config.json
-local timer = 3000, timerStr
-local timerX, timerSize = 400
+local timer = 3000
+local timerStr
+local timerX
+local timerSize = 400
 
 local title
 local titleX, titleSize
@@ -96,7 +98,7 @@ end)
 
 -- Render function, draws endImage if timer has run out
 function M.draw()
-    font:write(100, 100, timer, 60, 1,1,1,1)
+    font:write(100, 100, timer, timerSize, 1,1,1,1)
     -- bgImage:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
     -- if timer < 0 then
     --     endImage:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
