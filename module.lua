@@ -16,7 +16,6 @@ local title
 local titleX, titleSize
 
 local font = resource.load_font(localized "robotob.ttf")
--- local bouchsans = resource.load_font(localized "bouchsans.ttf")
 local bouchblkb = resource.load_font(localized "bouchblkb.ttf")
 
 -- Images
@@ -83,11 +82,11 @@ end
 util.set_interval(1, function()
     local minutes = math.floor(timer / 60)
     local seconds = timer - (minutes * 60)
-    -- if timer < 6000 then
-    --     local timerWidth = font:width("00:00", timerSize)
+    if timer < 6000 then
+        local timerWidth = font:width("00:00", timerSize)
     --     timerX = NATIVE_WIDTH / 2 - timerWidth / 2
     -- end
-    if timer == 0 then
+    -- if timer == 0 then
         timerStr = "00:00"
     else
         timerStr = string.format("%02d:%02d", minutes, seconds)
