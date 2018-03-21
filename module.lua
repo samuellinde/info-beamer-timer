@@ -81,20 +81,20 @@ end
 
 -- Timer
 util.set_interval(1, function()
-    -- local minutes = math.floor(timer / 60)
-    -- local seconds = timer - (minutes * 60)
-    -- if timer < 6000 then
-    --     local timerWidth = font:width("00:00", timerSize)
-    --     timerX = NATIVE_WIDTH / 2 - timerWidth / 2
-    -- end
-    -- if timer == 0 then
-    --     timerStr = "00:00"
-    -- else
-    --     timerStr = string.format("%02d:%02d", minutes, seconds)
-    -- end
-    -- if timerStatus == 'running' then
+    local minutes = math.floor(timer / 60)
+    local seconds = timer - (minutes * 60)
+    if timer < 6000 then
+        local timerWidth = font:width("00:00", timerSize)
+        timerX = NATIVE_WIDTH / 2 - timerWidth / 2
+    end
+    if timer == 0 then
+        timerStr = "00:00"
+    else
+        timerStr = string.format("%02d:%02d", minutes, seconds)
+    end
+    if timerStatus == 'running' then
         timer = timer - 1
-    -- end
+    end
 end)
 
 -- Render function, draws endImage if timer has run out
