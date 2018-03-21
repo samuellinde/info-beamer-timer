@@ -83,7 +83,7 @@ util.set_interval(1, function()
     local minutes = math.floor(timer / 60)
     local seconds = timer - (minutes * 60)
     if timer < 6000 then
-        -- local timerWidth = font:width("00:00", timerSize)
+        local timerWidth = font:width("00:00", timerSize)
         -- timerX = NATIVE_WIDTH / 2 - timerWidth / 2
     end
     if timer == 0 then
