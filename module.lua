@@ -12,7 +12,7 @@ local timerStatus = 'running'
 local timer = 3000
 local timerStr
 local timerX
-local timerSize = 400
+local timerSize = 40 -- 400
 
 local title
 local titleX, titleSize
