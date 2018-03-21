@@ -15,14 +15,14 @@ local timerX, timerSize
 local title
 local titleX, titleSize
 
-local font = resource.load_font("robotob.ttf")
--- local bouchsans = resource.load_font("bouchsans.ttf")
-local bouchblkb = resource.load_font("bouchblkb.ttf")
+local font = resource.load_font(localized "robotob.ttf")
+-- local bouchsans = resource.load_font(localized "bouchsans.ttf")
+local bouchblkb = resource.load_font(localized "bouchblkb.ttf")
 
 -- Images
 local bgImageName
-local bgImage -- = resource.load_image("redwedding.jpg")
-local endImage = resource.load_image("endofround.png")
+local bgImage = resource.load_image(localized "redwedding.jpg")
+local endImage = resource.load_image(localized "endofround.png")
 
 -- Textures/overlays
 local stdTexture = resource.create_colored_texture(0, 0, 0, 0.8)
@@ -43,7 +43,7 @@ function M.content_update(name)
         -- Load background image, replace if new
         if (not bgImageName) and (config.bgimage.asset_name ~= bgImageName) then
             bgImageName = config.bgimage.asset_name
-            bgImage = resource.load_image(bgImageName)
+            bgImage = resource.load_image(localized bgImageName)
         end
 
         -- Set initTimer on first load
@@ -97,16 +97,10 @@ util.set_interval(1, function()
 end)
 
 -- Render function, draws endImage if timer has run out
-
 function M.draw()
     bgImage:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
     if timer < 0 then
         endImage:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
-    -- Draw black on yellow around half time left
-    -- elseif (timer > halfTime - 10) and (timer < halfTime + 10) then
-    --     gl.clear(1, 1, 0, 1)
-    --     font:write(titleX, titleY, title, titleSize, 0, 0, 0, 1)
-    --     font:write(timerX, timerY, timerStr, timerSize, 0, 0, 0, 1)
     elseif timer < 180 then
         yTexture:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
         bouchblkb:write(titleX, titleY, title, titleSize, 0, 0, 0, 1)
