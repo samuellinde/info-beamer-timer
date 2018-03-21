@@ -39,12 +39,12 @@ end
 function M.content_update(name)
     print("sub module content update", name)
     if name == 'config.json' then
-        config = json.decode(content)
+        config = json.decode(localized(name))
 
         -- Load background image, replace if new
         if (not bgImageName) and (config.bgimage.asset_name ~= bgImageName) then
             bgImageName = config.bgimage.asset_name
-            bgImage = resource.load_image(localized bgImageName)
+            bgImage = resource.load_image(localized(bgImageName))
         end
 
         -- Set initTimer on first load
