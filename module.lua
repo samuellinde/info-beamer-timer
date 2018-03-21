@@ -81,7 +81,7 @@ util.set_interval(1, function()
     local minutes = math.floor(timer / 60)
     local seconds = timer - (minutes * 60)
     if timer < 6000 then
-        -- local timerWidth = font:width("00:00", timerSize)
+        local timerWidth = font:width("00:00", 400)
         -- timerX = NATIVE_WIDTH / 2 - timerWidth / 2
     end
     if timer == 0 then
@@ -96,7 +96,7 @@ end)
 
 -- Render function, draws endImage if timer has run out
 function M.draw()
-    font:write(100, 100, timer, 60, 1,1,1,1)
+    font:write(100, 100, timer, timerSize, 1,1,1,1)
     -- bgImage:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
     -- if timer < 0 then
     --     endImage:draw(0, 0, NATIVE_WIDTH, NATIVE_HEIGHT)
