@@ -84,6 +84,9 @@ node.event('data', function(data, suffix)
     timer_running = data == 'on'
     title = data .. '/' .. suffix
   end
+  if suffix == 'reset' then
+    timer = initTimer
+  end
 end)
 
 -- Timer
