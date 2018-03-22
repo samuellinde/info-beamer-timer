@@ -79,6 +79,18 @@ function M.content_remove(name)
     print("sub module content delete", name)
 end
 
+util.data_mapper {
+    reset = function()
+        timer = initTimer
+    end,
+    start = function()
+        timerStatus = 'running'
+    end,
+    stop = function()
+        timerStatus = 'stopped'
+    end
+}
+
 -- Timer
 util.set_interval(1, function()
     local minutes = math.floor(timer / 60)
