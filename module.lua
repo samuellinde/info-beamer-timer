@@ -31,8 +31,10 @@ local yTexture = resource.create_colored_texture(1, 1, 0, 0.6)
 
 print "sub module init"
 
-local function setup_timer(t = 50, s = 400)
+local function setup_timer(t, s)
     -- Set initTimer on first load
+    local t = t or 50
+    local s = s or 400
     local configTimer = t * 60
     if (not timer) or (configTimer ~= initTimer) then
         initTimer = configTimer
