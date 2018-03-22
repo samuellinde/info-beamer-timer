@@ -6,13 +6,13 @@ local json = require "json"
 
 local initTimer
 
-local timerStatus = 'running'
+local timerStatus = 'stopped'
 
 -- Timer and title variables, set dynamically via config.json
-local timer = 3000
+local timer -- = 3000
 local timerStr
 local timerX
-local timerSize = 400 -- 400
+local timerSize -- = 400
 
 local title
 local titleX, titleSize
@@ -31,6 +31,27 @@ local yTexture = resource.create_colored_texture(1, 1, 0, 0.6)
 
 print "sub module init"
 
+local function setup_timer(t = 50, s = 400)
+    -- Set initTimer on first load
+    local configTimer = t * 60
+    if (not timer) or (configTimer ~= initTimer) then
+        initTimer = configTimer
+        halfTime = configTimer / 2
+        timer = configTimer
+        timerStr = string.format("%02d:00", t)
+    end
+
+    -- Setup timer
+    if timer > 5999 then
+        timerApprox = "000:00"
+    else
+        timerApprox = "00:00"
+    end
+    timerSize = s
+    local timerWidth = font:width(timerApprox, timerSize)
+    timerX, timerY = NATIVE_WIDTH / 2 - timerWidth / 2, 400
+end
+
 function M.unload()
     print "sub module is unloaded"
 end
@@ -48,24 +69,7 @@ function M.content_update(name)
             bgImage = resource.load_image(localized(bgImageName))
         end
 
-        -- Set initTimer on first load
-        local configTimer = config.timer * 60
-        if (not timer) or (configTimer ~= initTimer) then
-            initTimer = configTimer
-            halfTime = configTimer / 2
-            timer = configTimer
-            timerStr = string.format("%02d:00", config.timer)
-        end
-
-        -- Setup timer
-        if timer > 5999 then
-            timerApprox = "000:00"
-        else
-            timerApprox = "00:00"
-        end
-        timerSize = config.timersize
-        local timerWidth = font:width(timerApprox, timerSize)
-        timerX, timerY = NATIVE_WIDTH / 2 - timerWidth / 2, 400
+        setup_timer(config.timer, config.timerSize)
 
         -- Setup title
         title = config.title
@@ -81,7 +85,7 @@ end
 
 util.data_mapper {
     reset = function()
-        timer = initTimer
+        setup_timer(initTimer)
     end,
     start = function()
         timerStatus = 'running'
