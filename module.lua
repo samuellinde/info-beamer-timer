@@ -36,9 +36,9 @@ local function setup_timer(t, s)
     local t = t or 50
     local s = s or 400
     local configTimer = t * 60
-    if (not timer) or (configTimer ~= initTimer) then
+    if configTimer ~= initTimer then
         initTimer = configTimer
-        halfTime = configTimer / 2
+        -- halfTime = configTimer / 2
         timer = configTimer
         timerStr = string.format("%02d:00", t)
     end
