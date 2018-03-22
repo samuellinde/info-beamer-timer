@@ -80,17 +80,10 @@ function M.content_remove(name)
 end
 
 node.event('data', function(data, suffix)
-  title = data .. '--' .. suffix
+  if suffix == 'toggle' then
+    timer_running = 'data' == 'on'
+  end
 end)
-
-util.data_mapper {
-    reset = function()
-      timer = initTimer
-    end,
-    toggle = function(status)
-      timer_running = status == 'on'
-    end
-}
 
 -- Timer
 util.set_interval(1, function()
