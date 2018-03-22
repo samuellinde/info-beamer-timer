@@ -98,7 +98,7 @@ util.set_interval(1, function()
     else
         timerStr = string.format("%02d:%02d", minutes, seconds)
     end
-    if timer_running == 'running' then
+    if timer_running then
         timer = timer - 1
     end
 end)
