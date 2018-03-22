@@ -79,6 +79,10 @@ function M.content_remove(name)
     print("sub module content delete", name)
 end
 
+node.event('data', function(data, suffix)
+  title = data .. '--' .. suffix
+end)
+
 util.data_mapper {
     reset = function()
       timer = initTimer
