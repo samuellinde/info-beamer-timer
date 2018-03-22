@@ -82,6 +82,7 @@ end
 node.event('data', function(data, suffix)
   if suffix == 'toggle' then
     timer_running = 'data' == 'on'
+    title = data .. '/' .. suffix
   end
 end)
 
